@@ -1,0 +1,128 @@
+{
+  "name": "@storybook/addon-react-native-web",
+  "version": "0.0.19",
+  "description": "Configure React storybook for react-native-web",
+  "author": "Daniel Williams",
+  "keywords": [
+    "storybook-addons",
+    "react-native",
+    "react-native-web"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/storybookjs/addon-react-native-web"
+  },
+  "license": "MIT",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/ts/index.d.ts",
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts"
+  ],
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "buildBabel": "concurrently \"yarn buildBabel:cjs\" \"yarn buildBabel:esm\"",
+    "buildBabel:cjs": "babel ./src -d ./dist/cjs --extensions \".js,.jsx,.ts,.tsx\"",
+    "buildBabel:esm": "babel ./src -d ./dist/esm --env-name esm --extensions \".js,.jsx,.ts,.tsx\"",
+    "buildTsc": "tsc --declaration --emitDeclarationOnly --outDir ./dist/ts",
+    "prebuild": "yarn clean",
+    "build": "concurrently \"yarn buildBabel\" \"yarn buildTsc\"",
+    "build:watch": "concurrently \"yarn buildBabel:esm -- --watch\" \"yarn buildTsc -- --watch\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "prestorybook": "yarn buildBabel:cjs",
+    "start": "concurrently \"yarn build:watch\" \"yarn storybook -- --no-manager-cache --quiet\"",
+    "build-storybook": "build-storybook",
+    "prerelease": "zx scripts/prepublish-checks.mjs",
+    "release": "yarn build && auto shipit",
+    "eject-ts": "zx scripts/eject-typescript.mjs",
+    "chromatic": "npx chromatic --project-token=c9eb9dda8699"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.16.7",
+    "@babel/runtime": "^7.17.9",
+    "@expo/html-elements": "^0.2.0",
+    "@react-native-community/eslint-config": "^3.1.0",
+    "@storybook/addon-actions": "^6.5.13",
+    "@storybook/addon-essentials": "^6.5.13",
+    "@storybook/builder-webpack5": "^6.5.6",
+    "@storybook/manager-webpack5": "^6.5.6",
+    "@storybook/addon-links": "^6.5.13",
+    "@storybook/react": "^6.5.13",
+    "@types/jest": "^27.4.1",
+    "@types/react-native": "^0.70.6",
+    "@types/react-native-vector-icons": "^6.4.12",
+    "@types/react-test-renderer": "^18.0.0",
+    "auto": "^10.36.5",
+    "babel-jest": "^28.0.0",
+    "babel-loader": "^8.2.5",
+    "babel-plugin-react-native-web": "^0.18.9",
+    "boxen": "^5.0.1",
+    "chromatic": "^6.11.2",
+    "concurrently": "^7.5.0",
+    "dedent": "^0.7.0",
+    "eslint": "^8.14.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-storybook": "^0.6.6",
+    "expo-linear-gradient": "^11.4.0",
+    "jest": "^28.0.0",
+    "metro-react-native-babel-preset": "^0.73.3",
+    "native-base": "^3.4.19",
+    "prettier": "^2.7.1",
+    "prop-types": "^15.8.1",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-native": "^0.70.4",
+    "react-native-gesture-handler": "^2.8.0",
+    "react-native-paper": "^4.12.5",
+    "react-native-reanimated": "2.9.1",
+    "react-native-safe-area-context": "^4.4.1",
+    "react-native-screens": "^3.18.2",
+    "react-native-svg": "^13.4.0",
+    "react-native-vector-icons": "^9.2.0",
+    "react-native-web": "^0.18.9",
+    "react-test-renderer": "18.1.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.8.4",
+    "victory": "^36.6.8",
+    "victory-native": "^36.6.8",
+    "zx": "^6.1.0"
+  },
+  "peerDependencies": {
+    "@babel/preset-react": "*",
+    "@storybook/addons": "*",
+    "@storybook/api": "*",
+    "@storybook/components": "*",
+    "@storybook/core-events": "*",
+    "@storybook/theming": "*",
+    "babel-plugin-react-native-web": "*",
+    "metro-react-native-babel-preset": "*",
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "storybook": {
+    "displayName": "React Native Web",
+    "supportedFrameworks": [
+      "react-native"
+    ],
+    "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
+  }
+}

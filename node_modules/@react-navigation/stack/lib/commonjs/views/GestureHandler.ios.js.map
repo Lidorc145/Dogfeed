@@ -1,0 +1,1 @@
+{"version":3,"names":[],"sources":["GestureHandler.ios.tsx"],"sourcesContent":["export * from './GestureHandlerNative';\n"],"mappings":";;;;;;AAAA;;AAAA;EAAA;EAAA;EAAA;IAAA;IAAA;MAAA;IAAA;EAAA;AAAA"}
