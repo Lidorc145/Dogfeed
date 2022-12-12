@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, FlatList, Spinner, Text } from 'native-base';
+import {Box, Button, FlatList, Spinner, Text} from 'native-base';
 import { useGetUsersQuery } from 'src/services/user-api';
 import { PublicUserData } from 'src/types';
 import { UserCard } from 'src/components/user-card';
@@ -33,6 +33,7 @@ export const ExploreScreen: React.FC<{}> = () => {
             flex={1}
             alignItems="center"
             justifyContent="center">
+            <Button onPress={refetch}  >Refetech</Button>
             <FlatList
                 w="100%"
                 h="100%"
