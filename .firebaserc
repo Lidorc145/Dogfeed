@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "dogfeel-5238f"
-  }
+    "staging": "dogfeel-5238f"
+  },
+  "targets": {},
+  "etags": {}
 }
