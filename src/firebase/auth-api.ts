@@ -16,7 +16,7 @@ import {
 import { auth } from './config';
 import { firebaseHandler, FirebaseError } from './handler';
 
-export { FirebaseError };
+
 
 /**
  * AUTH FUNCTIONS: https://firebase.google.com/docs/reference/js/auth.md#auth_package
