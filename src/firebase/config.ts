@@ -24,13 +24,13 @@ import {
 
 // setup firebase config
 const firebaseConfig = {
-    apiKey: "AIzaSyCnJXruh98pweSm8Bze_fH8NA1eUqg9i2Q",
-    authDomain: "dogfeel-24d98.firebaseapp.com",
-    projectId: "dogfeel-24d98",
-    storageBucket: "dogfeel-24d98.appspot.com",
-    messagingSenderId: "462806914017",
-    appId: "1:462806914017:web:09f6b78cdd7e23766438a0",
-    measurementId: "G-RV0CY5DB3J",
+    apiKey: FIREBASE_API_KEY,
+    authDomain: FIREBASE_AUTH_DOMAIN,
+    projectId: FIREBASE_PROJECT_ID,
+    storageBucket: FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: FIREBASE_MESSAGING_SENDER_ID,
+    appId: FIREBASE_APP_ID,
+    measurementId: FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
@@ -84,4 +84,4 @@ const createCollection = <T = DocumentData>(collectionName: string): CollectionR
  * Define the collections
  */
 export const privateUserCollection = createCollection<PrivateUserData>('private-user-data');
-export const publicUserCollection = createCollect
+export const publicUserCollection = createCollection<PublicUserData>('public-user-data');
