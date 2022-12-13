@@ -46,10 +46,18 @@ const SettingsStack: React.FC<{}> = () => {
                 }}
             />
             <ProfileNav.Screen
-                name="DeleteAccount"
+                name="DeleteAccount2"
                 component={DeleteAccountScreen}
                 options={{
                     headerTitle: 'Delete Account',
+                    presentation: 'modal',
+                }}
+            />
+            <ProfileNav.Screen
+                name="DeleteAccount"
+                component={DeleteAccountScreen}
+                options={{
+                    headerTitle: 'Dele2te Account',
                     presentation: 'modal',
                 }}
             />

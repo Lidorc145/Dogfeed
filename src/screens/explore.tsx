@@ -33,7 +33,6 @@ export const ExploreScreen: React.FC<{}> = () => {
             flex={1}
             alignItems="center"
             justifyContent="center">
-            <Button onPress={refetch}  >Refetech</Button>
             <FlatList
                 w="100%"
                 h="100%"

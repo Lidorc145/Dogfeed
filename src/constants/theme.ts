@@ -22,7 +22,7 @@ const fontStyles = {
  */
 export const nativeBaseLightTheme = extendTheme({
     colors: {
-        primary: theme.colors.indigo,
+        primary: theme.colors.blue,
         background: theme.colors.muted,
         plainText: theme.colors.blueGray,
     },

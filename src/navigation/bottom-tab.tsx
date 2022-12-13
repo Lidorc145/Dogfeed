@@ -35,14 +35,19 @@ export /**
  */
 const BottomTabNavigator: React.FC<{}> = () => {
     return (
-        <Tabs.Navigator screenOptions={{ tabBarHideOnKeyboard: true }}>
+        <Tabs.Navigator
+            screenListeners={({ navigation }) => ({
+                tabLongPress: (e) => {
+                    navigation.jumpTo(e.target.split('-')[0]);
+                },
+            })}
+            screenOptions={{ tabBarHideOnKeyboard: true }}>
             <Tabs.Screen
                 name="HomeTab"
                 component={HomeStackNavigator}
                 options={{
-                    title: 'Home',
-                    headerTitle: 'Home',
-                    headerShown: false,
+                    title: 'בית',
+                    headerShown: true,
                     tabBarIcon: HomeIcon,
                 }}
             />
@@ -50,7 +55,8 @@ const BottomTabNavigator: React.FC<{}> = () => {
                 name="Explore"
                 component={ExploreScreen}
                 options={{
-                    headerTitle: 'Explore',
+                    headerTitle: 'גינות',
+                    headerShown: true,
                     tabBarIcon: ExploreIcon,
                 }}
             />
