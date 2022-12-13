@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ExploreScreen } from 'src/screens';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { HomeStackNavigator } from './home-stack';
+import { rText } from '../../localizations';
 
 export type BottomTabParams = {
     HomeTab: undefined;
@@ -28,6 +29,10 @@ const ExploreIcon = ({ focused, color, size }: TabBarIconProps) => (
     <MaterialIcons name={focused ? 'search' : 'search'} color={color} size={size} />
 );
 
+const ChatIcon = ({ focused, color, size }: TabBarIconProps) => (
+    <MaterialIcons name={focused ? 'forum' : 'forum'} color={color} size={size} />
+);
+
 export /**
  *Bottom Tab Navigator, used for Navigating between all bottom tab screens
  *
@@ -46,8 +51,8 @@ const BottomTabNavigator: React.FC<{}> = () => {
                 name="HomeTab"
                 component={HomeStackNavigator}
                 options={{
-                    title: 'בית',
-                    headerShown: true,
+                    title: rText('home'),
+                    headerShown: false,
                     tabBarIcon: HomeIcon,
                 }}
             />
@@ -55,17 +60,17 @@ const BottomTabNavigator: React.FC<{}> = () => {
                 name="Explore"
                 component={ExploreScreen}
                 options={{
-                    headerTitle: 'גינות',
+                    title: rText('DogParks'),
                     headerShown: true,
                     tabBarIcon: ExploreIcon,
                 }}
             />
             <Tabs.Screen
-            name="Explore2"
+            name="Chat"
             component={ExploreScreen}
             options={{
-                headerTitle: 'Explore',
-                tabBarIcon: ExploreIcon,
+                title: rText('chat'),
+                tabBarIcon: ChatIcon,
             }}
         />
         </Tabs.Navigator>

@@ -8,6 +8,7 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { useAppSelector } from 'src/ducks/useful-hooks';
 import { AuthStackNavigator } from './auth-stack';
 import { SettingsStack } from './settings-stack';
+import { rText } from '../../localizations';
 
 export type HomeStackParams = {
     Home: undefined;
@@ -63,7 +64,7 @@ const HomeStackNavigator: React.FC<HomeStackProps> = ({ navigation }) => {
                 name="Home"
                 component={HomeScreen}
                 options={{
-                    headerTitle: 'Home',
+                    headerTitle: rText('home'),
                     headerRight: () =>
                         SettingsButton(() => navigation.navigate('SettingsStack'), isAnonymous),
                 }}

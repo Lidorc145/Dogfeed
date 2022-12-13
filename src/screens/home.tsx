@@ -3,9 +3,10 @@ import { useNavigation } from '@react-navigation/native';
 import { Avatar, Box, Button, Text, VStack } from 'native-base';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useAppDispatch, useAppSelector } from 'src/ducks/useful-hooks';
-import { incrementCount, decrementCount } from 'src/ducks/user-slice';
+import { incrementCount, decrementCount, setLanguage } from 'src/ducks/user-slice';
 import { HomeStackParams } from 'src/navigation/home-stack';
 import { useLazySignOutQuery } from 'src/services';
+import { rText } from '../../localizations';
 
 /**
  * Stack Navigation Prop for accessing screen navigation prop
@@ -78,11 +79,10 @@ export const HomeScreen: React.FC<{}> = () => {
                 mt="2"
                 colorScheme="indigo"
                 onPress={() => (user.loggedIn ? signOut(undefined) : navigation.navigate('Auth'))}>
-                {user.loggedIn ? 'Logout' : 'Login'}
+                {user.loggedIn ? rText('logout') : rText('login')}
             </Button>
-            <Button onPress={() => (navigation.navigate('Explore'))}>
-                Button
-            </Button>
+            <Button onPress={() =>{dispatch(setLanguage('he'))}}>Hebrew</Button>
+            <Button onPress={() =>{dispatch(setLanguage('en'))}}>English</Button>
         </Box>
     );
 };

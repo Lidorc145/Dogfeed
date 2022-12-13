@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AuthApi } from 'src/services';
 import { UserApi } from 'src/services/user-api';
 import { PrivateUserData } from 'src/types';
+import * as Localization from 'expo-localization';
 
 /**
  * Define the initial user
@@ -11,6 +12,7 @@ const initialUser: PrivateUserData = {
     isAnonymous: false,
     emailVerified: false,
     loggedIn: false,
+    language: Localization.locale.split('-')[0],
 };
 
 /**
@@ -33,6 +35,9 @@ const userSlice = createSlice({
         decrementCount: (state) => {
             // decrement, or set to -1
             state.count ? (state.count -= 1) : (state.count = -1);
+        },
+        setLanguage: (state,action) =>{
+            state.language = action.payload;
         },
     },
 
@@ -136,5 +141,5 @@ const userSlice = createSlice({
 /**
  * Export the corresponding redux actions
  */
-export const { incrementCount, decrementCount } = userSlice.actions;
+export const { setLanguage, incrementCount, decrementCount } = userSlice.actions;
 export default userSlice.reducer;
