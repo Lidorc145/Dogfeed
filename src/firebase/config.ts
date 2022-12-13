@@ -34,7 +34,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig, { experimentalAutoDetectLongPolling: true });
 
 /**
  * to get rid of async storage incompatibility with expo, initialize auth with the following method

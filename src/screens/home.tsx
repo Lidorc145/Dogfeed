@@ -80,6 +80,9 @@ export const HomeScreen: React.FC<{}> = () => {
                 onPress={() => (user.loggedIn ? signOut(undefined) : navigation.navigate('Auth'))}>
                 {user.loggedIn ? 'Logout' : 'Login'}
             </Button>
+            <Button onPress={() => (navigation.navigate('Explore'))}>
+                Button
+            </Button>
         </Box>
     );
 };

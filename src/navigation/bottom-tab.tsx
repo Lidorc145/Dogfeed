@@ -54,6 +54,14 @@ const BottomTabNavigator: React.FC<{}> = () => {
                     tabBarIcon: ExploreIcon,
                 }}
             />
+            <Tabs.Screen
+            name="Explore2"
+            component={ExploreScreen}
+            options={{
+                headerTitle: 'Explore',
+                tabBarIcon: ExploreIcon,
+            }}
+        />
         </Tabs.Navigator>
     );
 };
