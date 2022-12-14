@@ -1,31 +1,28 @@
 import React from 'react';
 import {
     Box,
-    VStack,
     Button,
-    Text,
-    useToast,
     FormControl,
     Heading,
     HStack,
     Icon,
     KeyboardAvoidingView,
+    Text,
+    useToast,
+    VStack,
 } from 'native-base';
-import { StackScreenProps } from '@react-navigation/stack';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { loginSchema, signupSchema } from 'src/utils/schemas';
-import { FormInput } from 'src/components/form-input';
-import { AuthStackParams } from 'src/navigation/auth-stack';
-import { AlertToast } from 'src/components/alert-toast';
-import { MaterialIcons } from '@expo/vector-icons';
-import {
-    useLazySendPasswordResetQuery,
-    useLazySignInQuery,
-    useLazySignUpQuery,
-} from 'src/services/auth-api';
-import { useAppSelector } from 'src/ducks/useful-hooks';
-import { Keyboard, Platform } from 'react-native';
+import {StackScreenProps} from '@react-navigation/stack';
+import {useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {loginSchema, signupSchema} from 'src/utils/schemas';
+import {FormInput} from 'src/components/form-input';
+import {AuthStackParams} from 'src/navigation/auth-stack';
+import {AlertToast} from 'src/components/alert-toast';
+import {MaterialIcons} from '@expo/vector-icons';
+import {useLazySendPasswordResetQuery, useLazySignInQuery, useLazySignUpQuery,} from 'src/services/auth-api';
+import {useAppSelector} from 'src/ducks/useful-hooks';
+import {Keyboard, Platform} from 'react-native';
+import {rText} from '../../localizations';
 
 type LoginScreenProps = StackScreenProps<AuthStackParams, 'Login'>;
 
@@ -35,9 +32,9 @@ export /**
  * @param {*} { route, navigation }
  * @return {*}
  */
-const LoginScreen: React.FC<LoginScreenProps> = ({ route, navigation }) => {
+const LoginScreen: React.FC<LoginScreenProps> = ({route, navigation}) => {
     // route params
-    const { signInMethods, email, title } = route.params;
+    const {signInMethods, email, title} = route.params;
     const isSignInScreen = signInMethods ? Boolean(signInMethods.length) : false;
 
     // hooks
@@ -46,7 +43,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ route, navigation }) => {
     const {
         control,
         handleSubmit,
-        formState: { errors },
+        formState: {errors},
         reset,
     } = useForm({
         resolver: yupResolver(schema),
@@ -55,8 +52,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ route, navigation }) => {
 
     // redux query hooks
     const queryHook = isSignInScreen ? useLazySignInQuery : useLazySignUpQuery;
-    const [triggerLogin, { isFetching, error }] = queryHook();
-    const [triggerPasswordReset, { isFetching: sendingEmail }] = useLazySendPasswordResetQuery();
+    const [triggerLogin, {isFetching, error}] = queryHook();
+    const [triggerPasswordReset, {isFetching: sendingEmail}] = useLazySendPasswordResetQuery();
 
     // rendering functions
     const renderPasswordToast = () => (
@@ -85,8 +82,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ route, navigation }) => {
     };
 
     // handle sign up
-    const handleLogin = async ({ password, firstName, lastName }: any) => {
-        const { isSuccess } = await triggerLogin({
+    const handleLogin = async ({password, firstName, lastName}: any) => {
+        const {isSuccess} = await triggerLogin({
             email,
             password,
             firstName,
@@ -107,7 +104,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ route, navigation }) => {
 
     // handle password reset
     const handlePasswordReset = async () => {
-        const { isSuccess } = await triggerPasswordReset(email);
+        const {isSuccess} = await triggerPasswordReset(email);
         if (isSuccess) {
             toast.show({
                 placement: 'bottom',
@@ -150,7 +147,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ route, navigation }) => {
                                 alignSelf="center">
                                 {title ||
                                     (!isSignInScreen
-                                        ? 'Please create your account password.'
+                                        ? rText('createAccountFormTitle')
                                         : 'Enter your password to login.')}
                             </Heading>
                         </HStack>
@@ -162,10 +159,10 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ route, navigation }) => {
                                     control={control}
                                     isInvalid={'password' in errors}
                                     password
-                                    label="Enter your password"
-                                    placeholder="Password"
+                                    label={rText("enterPassword")}
+                                    placeholder={rText("Password")}
                                     defaultValue=""
-                                    errorMessage={String(errors?.password?.message)}
+                                    errorMessage={rText(String(errors?.password?.message))}
                                 />
                                 <FormInput
                                     key="confirm-password"
@@ -173,10 +170,10 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ route, navigation }) => {
                                     control={control}
                                     isInvalid={'confirmPassword' in errors}
                                     password
-                                    label="Confirm your password"
-                                    placeholder="Confirm Password"
+                                    label={rText("enterConfirmPassword")}
+                                    placeholder={rText("confirmPassword")}
                                     defaultValue=""
-                                    errorMessage={String(errors?.confirmPassword?.message)}
+                                    errorMessage={rText(String(errors?.confirmPassword?.message))}
                                     py={1}
                                 />
                                 <FormInput
@@ -184,10 +181,10 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ route, navigation }) => {
                                     name="firstName"
                                     control={control}
                                     isInvalid={'firstName' in errors}
-                                    label="Enter your first name"
-                                    placeholder="First name"
+                                    label={rText("enterFirstName")}
+                                    placeholder={rText("firstName")}
                                     defaultValue=""
-                                    errorMessage={String(errors?.firstName?.message)}
+                                    errorMessage={rText(String(errors?.firstName?.message))}
                                     py={1}
                                 />
                                 <FormInput
@@ -195,10 +192,10 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ route, navigation }) => {
                                     name="lastName"
                                     control={control}
                                     isInvalid={'lastName' in errors}
-                                    label="Enter your last name"
-                                    placeholder="Last name"
+                                    label={rText("enterLastName")}
+                                    placeholder={rText("lastName")}
                                     defaultValue=""
-                                    errorMessage={String(errors?.lastName?.message)}
+                                    errorMessage={rText(String(errors?.lastName?.message))}
                                     py={1}
                                 />
                             </VStack>
@@ -211,10 +208,10 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ route, navigation }) => {
                                     control={control}
                                     isInvalid={'password' in errors}
                                     password
-                                    label="Enter your password"
-                                    placeholder="Password"
+                                    label={rText("enterPassword")}
+                                    placeholder={rText("password")}
                                     defaultValue=""
-                                    errorMessage={String(errors?.password?.message)}
+                                    errorMessage={rText(String(errors?.password?.message))}
                                 />
                                 <Button
                                     alignSelf="flex-end"
@@ -223,7 +220,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ route, navigation }) => {
                                     isLoading={sendingEmail}
                                     isLoadingText="Sending Email"
                                     onPress={handlePasswordReset}>
-                                    Forget Password?
+                                    {rText("Forget Password?")}
                                 </Button>
                             </>
                         ) : null}
@@ -235,7 +232,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ route, navigation }) => {
                             onPress={handleSubmit(handleLogin)}
                             isLoading={isFetching}
                             isLoadingText={isSignInScreen ? 'Logging In' : 'Signing Up'}>
-                            {isSignInScreen ? 'Login' : 'Sign Up'}
+                            {isSignInScreen ? rText('Login') : rText('Sign Up')}
                         </Button>
                         {/* <Button mt="3" colorScheme="primary" w="100%" disabled>
                         Send me a sign-in link
@@ -252,7 +249,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ route, navigation }) => {
                         variant="link"
                         p={0}
                         onPress={() => navigation.goBack()}>
-                        Return to previous screen
+                        {rText("returnToPrevScreen")}
                     </Button>
                 </VStack>
             </Box>

@@ -21,16 +21,17 @@ interface TabBarIconProps {
     color: string;
     size: number;
 }
-const HomeIcon = ({ focused, color, size }: TabBarIconProps) => (
-    <MaterialCommunityIcons name={focused ? 'home' : 'home-outline'} color={color} size={size} />
+
+const HomeIcon = ({focused, color, size}: TabBarIconProps) => (
+    <MaterialCommunityIcons name={focused ? 'home' : 'home-outline'} color={color} size={size}/>
 );
 
-const ExploreIcon = ({ focused, color, size }: TabBarIconProps) => (
-    <MaterialIcons name={focused ? 'search' : 'search'} color={color} size={size} />
+const ExploreIcon = ({focused, color, size}: TabBarIconProps) => (
+    <MaterialIcons name={focused ? 'search' : 'search'} color={color} size={size}/>
 );
 
-const ChatIcon = ({ focused, color, size }: TabBarIconProps) => (
-    <MaterialIcons name={focused ? 'forum' : 'forum'} color={color} size={size} />
+const ChatIcon = ({focused, color, size}: TabBarIconProps) => (
+    <MaterialIcons name={focused ? 'forum' : 'forum'} color={color} size={size}/>
 );
 
 export /**
@@ -41,7 +42,7 @@ export /**
 const BottomTabNavigator: React.FC<{}> = () => {
     return (
         <Tabs.Navigator
-            screenListeners={({ navigation }) => ({
+            screenListeners={({navigation}) => ({
                 tabLongPress: (e) => {
                     navigation.jumpTo(e.target.split('-')[0]);
                 },

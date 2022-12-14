@@ -1,5 +1,4 @@
 import * as yup from 'yup';
-
 /**
  * File defines varies yup schemas to be used for form validation
  */
@@ -14,7 +13,7 @@ export interface AuthenticateSchemaType extends yup.InferType<typeof authenticat
  * schema for a one form input for email
  */
 export const emailSchema = yup.object().shape({
-    email: yup.string().email('Invalid email').required('Email is required'),
+    email: yup.string().email('Invalid email').required('Email Is Required'),
 });
 export interface EmailSchemaType extends yup.InferType<typeof emailSchema> {}
 

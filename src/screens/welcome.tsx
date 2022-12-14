@@ -25,6 +25,7 @@ import {
     useLazySignUpQuery,
 } from 'src/services/auth-api';
 import { LogoIcon } from 'src/components/logo-icon';
+import {rText} from '../../localizations';
 
 // define navigation props
 type WelcomeScreenParams = StackNavigationProp<AuthStackParams, 'Welcome'>;
@@ -107,14 +108,14 @@ const WelcomeScreen: React.FC<{}> = () => {
                         <>
                             <LogoIcon size={200} color={iconColor} />
                             <Heading textAlign="center" mb={3} color="plainText.900">
-                                Welcome to the Maet template!
+                                {rText('WelcomeToDogfeel')}
                             </Heading>
                         </>
                     ) : (
                         <HStack pt={5} space={5} w="100%" justifyContent="center">
                             <LogoIcon size={50} color={iconColor} />
                             <Heading textAlign="left" mb={3} color="plainText.900">
-                                Welcome to the Maet template!
+                                {rText('WelcomeToDogfeel')}
                             </Heading>
                         </HStack>
                     )}
@@ -123,10 +124,10 @@ const WelcomeScreen: React.FC<{}> = () => {
                         name="email"
                         control={control}
                         isInvalid={'email' in errors}
-                        label="Input your email"
+                        label={rText("InputYourEmail")}
                         placeholder="name@example.com"
                         defaultValue=""
-                        errorMessage={String(errors?.email?.message)}
+                        errorMessage={rText(String(errors?.email?.message))}
                     />
                     {/* <Button mt="3" colorScheme="primary" w="100%" >
                         Send me a sign-in link
@@ -137,8 +138,8 @@ const WelcomeScreen: React.FC<{}> = () => {
                         colorScheme="primary"
                         onPress={handleSubmit(handleEmail)}
                         isLoading={emailFetching}
-                        isLoadingText="Submitting">
-                        Submit
+                        isLoadingText={rText("Submitting")}>
+                        {rText('Submit')}
                     </Button>
                     {!isAnonymous ? (
                         <Button
@@ -147,8 +148,8 @@ const WelcomeScreen: React.FC<{}> = () => {
                             variant="link"
                             onPress={handleAnonymous}
                             isLoading={guestFetching}
-                            isLoadingText="Continuing">
-                            Continue as guest
+                            isLoadingText={rText("Continuing")}>
+                            {rText('continueAsGuest')}
                         </Button>
                     ) : null}
                     <Text color="danger.600">{fetchingError?.message}</Text>
