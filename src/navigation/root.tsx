@@ -6,6 +6,7 @@ import { useAppSelector } from 'src/ducks/useful-hooks';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { AuthStackNavigator } from './auth-stack';
 import { BottomTabNavigator } from './bottom-tab';
+import { rText } from '../../localizations';
 
 export interface RootParams {
     scheme?: ColorSchemeName; // the color scheme of the app

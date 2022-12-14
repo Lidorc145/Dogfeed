@@ -1,7 +1,7 @@
 import React from 'react';
 import { Alert, GestureResponderEvent } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {ExploreScreen, HomeScreen} from 'src/screens';
+import { ExploreScreen, HomeScreen } from 'src/screens';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { Icon, IconButton } from 'native-base';
 import { StackScreenProps } from '@react-navigation/stack';
@@ -64,7 +64,6 @@ const HomeStackNavigator: React.FC<HomeStackProps> = ({ navigation }) => {
                 name="Home"
                 component={HomeScreen}
                 options={{
-                    headerTitle: rText('home'),
                     headerRight: () =>
                         SettingsButton(() => navigation.navigate('SettingsStack'), isAnonymous),
                 }}
