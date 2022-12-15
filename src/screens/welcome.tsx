@@ -166,7 +166,6 @@ const WelcomeScreen: React.FC<{}> = () => {
                         </Button>
                     ) : null}
 
-                    <Text>Change Language:</Text>
                     <ChangeLanguage />
                 </VStack>
             </Box>

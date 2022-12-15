@@ -24,7 +24,7 @@ const CloseIcon = (onClose: () => void) => (
 );
 
 const SettingsButton = (onPress?: (event: GestureResponderEvent) => void, isDisabled?: boolean) => (
-    <View style={{ flexDirection: 'row' }}>
+    <>
         <ChangeLanguage />
         <IconButton
             isDisabled={isDisabled}
@@ -32,7 +32,7 @@ const SettingsButton = (onPress?: (event: GestureResponderEvent) => void, isDisa
             icon={<Icon as={MaterialIcons} name="settings" size="lg" color="primary.700" />}
             onPress={isDisabled ? null : onPress}
         />
-    </View>
+    </>
 );
 
 type HomeStackProps = StackScreenProps<HomeStackParams, 'Home'>;

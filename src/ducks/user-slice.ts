@@ -36,7 +36,7 @@ const userSlice = createSlice({
             // decrement, or set to -1
             state.count ? (state.count -= 1) : (state.count = -1);
         },
-        setLanguage: (state,action) =>{
+        setLanguage: (state, action) => {
             state.language = action.payload;
         },
     },
@@ -58,7 +58,7 @@ const userSlice = createSlice({
         builder.addMatcher(
             AuthApi.endpoints.signUp.matchFulfilled,
             (_state, action: PayloadAction<PrivateUserData>) => {
-                return { ...action.payload };
+                return { ..._state, ...action.payload };
             },
         );
 
