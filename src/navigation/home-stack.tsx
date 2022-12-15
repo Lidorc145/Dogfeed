@@ -1,11 +1,12 @@
 import React from 'react';
-import { Alert, GestureResponderEvent } from 'react-native';
+import { Alert, GestureResponderEvent, View } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ExploreScreen, HomeScreen } from 'src/screens';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { Icon, IconButton } from 'native-base';
 import { StackScreenProps } from '@react-navigation/stack';
 import { useAppSelector } from 'src/ducks/useful-hooks';
+import { ChangeLanguage } from 'src/components/changeLanguage';
 import { AuthStackNavigator } from './auth-stack';
 import { SettingsStack } from './settings-stack';
 import { rText } from '../../localizations';
@@ -23,13 +24,15 @@ const CloseIcon = (onClose: () => void) => (
 );
 
 const SettingsButton = (onPress?: (event: GestureResponderEvent) => void, isDisabled?: boolean) => (
-    <IconButton
-        isDisabled={isDisabled}
-        alignSelf="flex-end"
-        variant="unstyled"
-        icon={<Icon as={MaterialIcons} name="settings" size="lg" color="primary.700" />}
-        onPress={isDisabled ? null : onPress}
-    />
+    <View style={{ flexDirection: 'row' }}>
+        <ChangeLanguage />
+        <IconButton
+            isDisabled={isDisabled}
+            variant="unstyled"
+            icon={<Icon as={MaterialIcons} name="settings" size="lg" color="primary.700" />}
+            onPress={isDisabled ? null : onPress}
+        />
+    </View>
 );
 
 type HomeStackProps = StackScreenProps<HomeStackParams, 'Home'>;
@@ -61,7 +64,7 @@ const HomeStackNavigator: React.FC<HomeStackProps> = ({ navigation }) => {
     return (
         <StackNav.Navigator>
             <StackNav.Screen
-                name="Home"
+                name={rText('home')}
                 component={HomeScreen}
                 options={{
                     headerRight: () =>
@@ -71,7 +74,7 @@ const HomeStackNavigator: React.FC<HomeStackProps> = ({ navigation }) => {
             <StackNav.Screen
                 name="SettingsStack"
                 component={SettingsStack}
-                options={{ headerTitle: 'Settings', animationTypeForReplace: 'pop' }}
+                options={{ headerTitle: rText('Settings'), animationTypeForReplace: 'pop' }}
             />
             <StackNav.Screen
                 name="Auth"

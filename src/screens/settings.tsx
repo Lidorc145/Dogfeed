@@ -13,6 +13,7 @@ import { AlertToast } from 'src/components/alert-toast';
 import { SettingStackParams } from 'src/navigation/settings-stack';
 import { StackScreenProps } from '@react-navigation/stack';
 import { MaterialIcons } from '@expo/vector-icons';
+import { rText } from '../../localizations';
 
 type SettingScreenProps = StackScreenProps<SettingStackParams, 'Settings'>;
 
@@ -106,7 +107,7 @@ const SettingsScreen: React.FC<SettingScreenProps> = ({ navigation }) => {
                         name="firstName"
                         control={control}
                         isInvalid={'firstName' in errors}
-                        label="Enter your first name"
+                        label={rText('Enter your first name')}
                         placeholder="First Name"
                         defaultValue={user.firstName ? user.firstName : ''}
                         errorMessage={errors?.firstName?.message}
@@ -116,8 +117,8 @@ const SettingsScreen: React.FC<SettingScreenProps> = ({ navigation }) => {
                         name="lastName"
                         control={control}
                         isInvalid={'lastName' in errors}
-                        label="Enter your last name"
-                        placeholder="Last Name"
+                        label={rText('Enter your last name')}
+                        placeholder={rText('Last Name')}
                         defaultValue={user.lastName ? user.lastName : ''}
                         errorMessage={errors?.lastName?.message}
                     />
@@ -127,7 +128,7 @@ const SettingsScreen: React.FC<SettingScreenProps> = ({ navigation }) => {
                         mt={8}
                         my={3}
                         onPress={handleSubmit(handleUserUpdate)}>
-                        Save Changes
+                        {rText('Save Changes')}
                     </Button>
                 </FormControl>
                 <Button
@@ -135,21 +136,21 @@ const SettingsScreen: React.FC<SettingScreenProps> = ({ navigation }) => {
                     my={2}
                     endIcon={<Icon as={MaterialIcons} name="arrow-forward-ios" />}
                     onPress={() => navigation.navigate('Password')}>
-                    Change Password
+                    {rText('Change Password')}
                 </Button>
                 <Button
                     variant="subtle"
                     mb={7}
                     endIcon={<Icon as={MaterialIcons} name="arrow-forward-ios" />}
                     onPress={() => navigation.navigate('Email')}>
-                    Change Email
+                    {rText('Change Email')}
                 </Button>
                 <Button
                     variant="ghost"
                     colorScheme="danger"
                     endIcon={<Icon as={MaterialIcons} name="arrow-forward-ios" />}
                     onPress={() => navigation.navigate('DeleteAccount')}>
-                    Delete Account
+                    {rText('Delete Account')}
                 </Button>
             </Box>
         </KeyboardAvoidingView>

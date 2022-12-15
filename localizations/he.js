@@ -37,4 +37,12 @@ export const he = {
     'Minimum 8 characters': 'לפחות 8 תווים',
     'Passwords must match': 'הסיסמאות אינן תואמות',
     'Forget Password?': 'שכחת סיסמה?',
+
+    Settings: 'הגדרות',
+    'Save Changes': 'שמור שינויים',
+    'Change Password': 'שנה סיסמה',
+    'Change Email': 'שנה אימייל',
+    'Delete Account': 'מחק חשבון',
+    '': '',
+    '': '',
 };

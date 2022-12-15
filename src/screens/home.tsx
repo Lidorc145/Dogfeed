@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Avatar, Box, Button, Text, VStack } from 'native-base';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -7,7 +7,7 @@ import { incrementCount, decrementCount, setLanguage } from 'src/ducks/user-slic
 import { HomeStackParams } from 'src/navigation/home-stack';
 import { useLazySignOutQuery } from 'src/services';
 import { rText } from '../../localizations';
-
+import { ChangeLanguage } from '../components/changeLanguage';
 /**
  * Stack Navigation Prop for accessing screen navigation prop
  */
@@ -22,7 +22,6 @@ export const HomeScreen: React.FC<{}> = () => {
     // hooks
     const navigation = useNavigation<HomeScreenProps>();
     const [signOut, { isFetching }] = useLazySignOutQuery();
-
     // redux handlers
     const user = useAppSelector((state) => state.user);
     const dispatch = useAppDispatch();
@@ -81,8 +80,6 @@ export const HomeScreen: React.FC<{}> = () => {
                 onPress={() => (user.loggedIn ? signOut(undefined) : navigation.navigate('Auth'))}>
                 {user.loggedIn ? rText('logout') : rText('login')}
             </Button>
-            <Button onPress={() =>{dispatch(setLanguage('he'))}}>Hebrew</Button>
-            <Button onPress={() =>{dispatch(setLanguage('en'))}}>English</Button>
         </Box>
     );
 };

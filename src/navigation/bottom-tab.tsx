@@ -2,10 +2,8 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ExploreScreen } from 'src/screens';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
-import firebase from 'firebase/compat';
 import { HomeStackNavigator } from './home-stack';
 import { rText } from '../../localizations';
-import functions = firebase.functions;
 
 export type BottomTabParams = {
     HomeTab: undefined;

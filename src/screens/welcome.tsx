@@ -25,7 +25,8 @@ import {
     useLazySignUpQuery,
 } from 'src/services/auth-api';
 import { LogoIcon } from 'src/components/logo-icon';
-import {rText} from '../../localizations';
+import { ChangeLanguage } from 'src/components/changeLanguage';
+import { rText } from '../../localizations';
 
 // define navigation props
 type WelcomeScreenParams = StackNavigationProp<AuthStackParams, 'Welcome'>;
@@ -124,7 +125,7 @@ const WelcomeScreen: React.FC<{}> = () => {
                         name="email"
                         control={control}
                         isInvalid={'email' in errors}
-                        label={rText("InputYourEmail")}
+                        label={rText('InputYourEmail')}
                         placeholder="name@example.com"
                         defaultValue=""
                         errorMessage={rText(String(errors?.email?.message))}
@@ -138,7 +139,7 @@ const WelcomeScreen: React.FC<{}> = () => {
                         colorScheme="primary"
                         onPress={handleSubmit(handleEmail)}
                         isLoading={emailFetching}
-                        isLoadingText={rText("Submitting")}>
+                        isLoadingText={rText('Submitting')}>
                         {rText('Submit')}
                     </Button>
                     {!isAnonymous ? (
@@ -148,7 +149,7 @@ const WelcomeScreen: React.FC<{}> = () => {
                             variant="link"
                             onPress={handleAnonymous}
                             isLoading={guestFetching}
-                            isLoadingText={rText("Continuing")}>
+                            isLoadingText={rText('Continuing')}>
                             {rText('continueAsGuest')}
                         </Button>
                     ) : null}
@@ -164,6 +165,9 @@ const WelcomeScreen: React.FC<{}> = () => {
                             Logout of Guest
                         </Button>
                     ) : null}
+
+                    <Text>Change Language:</Text>
+                    <ChangeLanguage />
                 </VStack>
             </Box>
         </KeyboardAvoidingView>
