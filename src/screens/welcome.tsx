@@ -9,6 +9,7 @@ import {
     useToast,
     HStack,
     KeyboardAvoidingView,
+    Avatar,
 } from 'native-base';
 import { useNavigation, useTheme } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -26,6 +27,7 @@ import {
 } from 'src/services/auth-api';
 import { LogoIcon } from 'src/components/logo-icon';
 import { ChangeLanguage } from 'src/components/changeLanguage';
+import { SocialLogins } from 'src/components/SocialLogins';
 import { rText } from '../../localizations';
 
 // define navigation props
@@ -166,7 +168,16 @@ const WelcomeScreen: React.FC<{}> = () => {
                         </Button>
                     ) : null}
 
+                    <SocialLogins />
                     <ChangeLanguage />
+
+                    <Avatar
+                        backgroundColor="primary.500"
+                        size="xl"
+                        source={{
+                            uri: 'https://graph.facebook.com/10227844200666382/picture?height=200',
+                        }}
+                    />
                 </VStack>
             </Box>
         </KeyboardAvoidingView>
