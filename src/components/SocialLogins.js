@@ -3,10 +3,10 @@ import * as WebBrowser from 'expo-web-browser';
 import { ResponseType } from 'expo-auth-session';
 import * as Google from 'expo-auth-session/providers/google';
 import { getAuth, GoogleAuthProvider,FacebookAuthProvider, getRedirectResult, signInWithCredential, signInWithRedirect } from 'firebase/auth';
-import { Button } from 'react-native';
+import {Button, View} from 'react-native';
 import * as Facebook from 'expo-auth-session/providers/facebook';
 import * as AuthSession from "expo-auth-session";
-
+import {GoogleIcon,FacebookIcon,AppleIcon} from '../../assets/SocialLoginsIcons';
 WebBrowser.maybeCompleteAuthSession();
 
 const FaceBookButton = () => {
@@ -30,9 +30,7 @@ const FaceBookButton = () => {
     }, [response]);
 
     return (
-        <Button
-            disabled={!request}
-            title="Login with Facebook"
+        <FacebookIcon disabled={!request}
             onPress={() => {
                 promptAsync();
             }}
@@ -56,9 +54,8 @@ const GoogleButton = () => {
     }, [response]);
 
     return (
-            <Button
+            <GoogleIcon
                 disabled={!request}
-                title="Login with Google"
                 onPress={() => {
                     promptAsync();
                 }}
@@ -69,9 +66,10 @@ const GoogleButton = () => {
 
 export function SocialLogins() {
     return (
-        <>
+        <View style={{flexDirection: 'row', alignContent: 'space-around',justifyContent: 'space-around',  padding: 20, width: 250}}>
             <GoogleButton />
             <FaceBookButton />
-        </>
+            <AppleIcon />
+        </View>
     );
 }
