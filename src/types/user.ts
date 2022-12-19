@@ -28,5 +28,4 @@ export interface PrivateUserData extends PublicUserData {
     isAnonymous: boolean;
     emailVerified: boolean;
     loggedIn: boolean;
-    provider?: string | null;
 }

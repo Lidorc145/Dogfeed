@@ -9,6 +9,7 @@ import {
     useToast,
     HStack,
     KeyboardAvoidingView,
+    Avatar,
 } from 'native-base';
 import { useNavigation, useTheme } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -43,6 +44,8 @@ const WelcomeScreen: React.FC<{}> = () => {
     const isAnonymous = useAppSelector((state) => state.user.isAnonymous);
     const toast = useToast();
     const iconColor = useTheme().colors.text;
+
+    // form schema hooks
     const {
         control,
         handleSubmit,
@@ -61,7 +64,7 @@ const WelcomeScreen: React.FC<{}> = () => {
     // toast component for guest
     const renderGuestToast = () => (
         <AlertToast
-            title="Using Dogfeel as a Guest."
+            title="Using Maet as a Guest."
             type="primary"
             toExit={() => toast.close('guestToast')}
         />
@@ -129,7 +132,9 @@ const WelcomeScreen: React.FC<{}> = () => {
                         defaultValue=""
                         errorMessage={rText(String(errors?.email?.message))}
                     />
-
+                    {/* <Button mt="3" colorScheme="primary" w="100%" >
+                        Send me a sign-in link
+                    </Button> */}
                     <Button
                         key="Password-Button"
                         w="100%"
@@ -139,8 +144,6 @@ const WelcomeScreen: React.FC<{}> = () => {
                         isLoadingText={rText('Submitting')}>
                         {rText('Submit')}
                     </Button>
-                    <SocialLogins />
-
                     {!isAnonymous ? (
                         <Button
                             w="100%"
@@ -165,7 +168,16 @@ const WelcomeScreen: React.FC<{}> = () => {
                         </Button>
                     ) : null}
 
+                    <SocialLogins />
                     <ChangeLanguage />
+
+                    <Avatar
+                        backgroundColor="primary.500"
+                        size="xl"
+                        source={{
+                            uri: 'https://graph.facebook.com/10227844200666382/picture?height=200',
+                        }}
+                    />
                 </VStack>
             </Box>
         </KeyboardAvoidingView>
