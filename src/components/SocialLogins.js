@@ -94,28 +94,34 @@ const GoogleButton = (navigation) => {
         clientId: '290343474599-je01f3rsbkikc7fjspimoabt4kcr5skp.apps.googleusercontent.com',
     });
 
-    React.useEffect(() => {
+    React.useEffect(async () => {
         if (response?.type === 'success') {
             const { id_token } = response.params;
             const auth = getAuth();
             const credential = GoogleAuthProvider.credential(id_token);
 
-            signInWithCredential(auth, credential).then((r)=>{
+            signInWithCredential(auth, credential).then(async (r) => {
                 console.log(r._tokenResponse);
-                const user =r._tokenResponse;
+                const user = r._tokenResponse;
+                if (user.isNewUser) {
+                    updatePrivateUserData({
+                        id: user.localId,
+                        provider: user.providerId,
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        email: user.email,
+                        emailVerified: user.emailVerified,
+                        image: user.photoUrl,
+                        isAnonymous: false,
+                        loggedIn: true,
+                    }, user.isNewUser);
+                    dispatch(signInSocial(user));
+                } else {
+                    const privateUserDataFromDB = await getPrivateUserData(user.id);
+                    console.log(privateUserDataFromDB);
+                    dispatch(signInSocial({...user, ...privateUserDataFromDB}));
+                }
 
-                updatePrivateUserData({
-                    id: user.localId,
-                    provider: user.providerId,
-                    firstName: user.firstName,
-                    lastName: user.lastName,
-                    email: user.email,
-                    emailVerified: user.emailVerified,
-                    image: user.photoUrl,
-                    isAnonymous: false,
-                    loggedIn: true,
-                }, user.isNewUser);
-                dispatch(signInSocial(user));
             });
         }
     }, [response]);
