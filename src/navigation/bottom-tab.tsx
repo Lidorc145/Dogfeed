@@ -72,7 +72,7 @@ const BottomTabNavigator: React.FC<{}> = () => {
         />,
     ];
 
-    if (rText('dir') == 'LTR') {
+    if (rText('dir') === 'LTR') {
         tabs.reverse();
     }
 

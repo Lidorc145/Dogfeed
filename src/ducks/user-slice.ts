@@ -28,6 +28,22 @@ const userSlice = createSlice({
      * Define the reducers for this slice
      */
     reducers: {
+        signInSocial: (state, action) => {
+            // increment, or set to 1
+            console.log(action.payload);
+            const user = action.payload;
+            return {
+                ...state,
+                id: user.localId,
+                provider: user.providerId,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                emailVerified: user.emailVerified,
+                image: user.photoUrl,
+                loggedIn: true,
+            };
+        },
         incrementCount: (state) => {
             // increment, or set to 1
             state.count ? (state.count += 1) : (state.count = 1);
@@ -141,5 +157,5 @@ const userSlice = createSlice({
 /**
  * Export the corresponding redux actions
  */
-export const { setLanguage, incrementCount, decrementCount } = userSlice.actions;
+export const { setLanguage, signInSocial, incrementCount, decrementCount } = userSlice.actions;
 export default userSlice.reducer;
