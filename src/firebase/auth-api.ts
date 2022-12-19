@@ -1,6 +1,7 @@
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
+    signInWithCustomToken,
     signInAnonymously,
     signOut,
     fetchSignInMethodsForEmail,
@@ -13,10 +14,9 @@ import {
     reauthenticateWithCredential,
     EmailAuthProvider,
 } from 'firebase/auth';
+import { Auth } from '@firebase/auth';
 import { auth } from './config';
 import { firebaseHandler, FirebaseError } from './handler';
-
-
 
 /**
  * AUTH FUNCTIONS: https://firebase.google.com/docs/reference/js/auth.md#auth_package
