@@ -2,19 +2,25 @@ import * as React from 'react';
 import * as WebBrowser from 'expo-web-browser';
 import { ResponseType } from 'expo-auth-session';
 import * as Google from 'expo-auth-session/providers/google';
-import { getAuth, GoogleAuthProvider,FacebookAuthProvider, getRedirectResult, signInWithCredential, signInWithRedirect } from 'firebase/auth';
-import {Button, View} from 'react-native';
+import { getAuth, GoogleAuthProvider,FacebookAuthProvider, signInWithCredential } from 'firebase/auth';
+import { View } from 'react-native';
 import * as Facebook from 'expo-auth-session/providers/facebook';
 import * as AuthSession from "expo-auth-session";
 import {GoogleIcon,FacebookIcon,AppleIcon} from '../../assets/SocialLoginsIcons';
 import {getPrivateUserData, updatePrivateUserData} from "../firebase/user-api";
-import { useLazySignUpQuery} from "../services";
-import {useToast} from "native-base";
-import {AlertToast} from "./alert-toast";
 import { useAppDispatch, useAppSelector } from '../ducks/useful-hooks';
-import { setLanguage,signInSocial } from '../ducks/user-slice';
+import { signInSocial } from '../ducks/user-slice';
 
 WebBrowser.maybeCompleteAuthSession();
+const providerGoogle = new GoogleAuthProvider();
+const providerFacebook = new FacebookAuthProvider();
+
+providerFacebook.setCustomParameters({
+    prompt: 'select_account'
+});
+providerGoogle.setCustomParameters({
+    prompt: 'select_account'
+});
 
 const FaceBookButton = () => {
     const dispatch = useAppDispatch();
@@ -30,6 +36,7 @@ const FaceBookButton = () => {
             const { access_token } = response.params;
             const auth = getAuth();
             const credential = FacebookAuthProvider.credential(access_token);
+
             signInWithCredential(auth, credential).then(async (r)=>{
                     const user = r._tokenResponse;
                     const renderedData =
@@ -51,7 +58,7 @@ const FaceBookButton = () => {
                         const privateUserDataFromDB = await getPrivateUserData(user.localId);
                         dispatch(signInSocial({ ...renderedData, ...privateUserDataFromDB.data(), loggedIn: true}));
                     }
-            });
+            }).catch(e=>{});
         }
     }, [response]);
 
@@ -75,7 +82,6 @@ const GoogleButton = (navigation) => {
             const { id_token } = response.params;
             const auth = getAuth();
             const credential = GoogleAuthProvider.credential(id_token);
-
             signInWithCredential(auth, credential).then(async (r) => {
                 const user = r._tokenResponse;
                 const renderedData =
@@ -98,7 +104,7 @@ const GoogleButton = (navigation) => {
                     dispatch(signInSocial({ ...renderedData, ...privateUserDataFromDB.data(), loggedIn: true}));
                 }
 
-            });
+            }).catch(e=>{});
         }
     }, [response]);
 
