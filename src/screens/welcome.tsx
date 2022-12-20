@@ -19,6 +19,7 @@ import { FormInput } from 'src/components/form-input';
 import { useAppSelector } from 'src/ducks/useful-hooks';
 import { AuthStackParams } from 'src/navigation/auth-stack';
 import { AlertToast } from 'src/components/alert-toast';
+import { styles } from 'src/constants/theme';
 import {
     useLazyFetchSignInMethodsQuery,
     useLazySignOutQuery,
@@ -120,6 +121,7 @@ const WelcomeScreen: React.FC<{}> = () => {
                         </HStack>
                     )}
                     <FormInput
+                        rounded="3xl"
                         key="login-email"
                         name="email"
                         control={control}
@@ -131,6 +133,7 @@ const WelcomeScreen: React.FC<{}> = () => {
                     />
 
                     <Button
+                        style={styles.input}
                         key="Password-Button"
                         w="100%"
                         colorScheme="primary"
