@@ -7,7 +7,6 @@ import { incrementCount, decrementCount, setLanguage } from 'src/ducks/user-slic
 import { HomeStackParams } from 'src/navigation/home-stack';
 import { useLazySignOutQuery } from 'src/services';
 import { rText } from '../../localizations';
-import { ChangeLanguage } from '../components/changeLanguage';
 /**
  * Stack Navigation Prop for accessing screen navigation prop
  */

@@ -26,7 +26,6 @@ import {
 } from 'src/services/auth-api';
 import { useAppSelector } from 'src/ducks/useful-hooks';
 import { Keyboard, Platform } from 'react-native';
-import { ChangeLanguage } from 'src/components/changeLanguage';
 import { rText } from '../../localizations';
 
 type LoginScreenProps = StackScreenProps<AuthStackParams, 'Login'>;
