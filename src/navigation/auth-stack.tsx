@@ -1,8 +1,9 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { LoginScreen, WelcomeScreen } from 'src/screens';
+import { LoginScreen, WelcomeScreen, IntroScreen } from 'src/screens';
 
 export type AuthStackParams = {
+    IntroScreen?: undefined;
     Welcome?: undefined;
     Login: {
         signInMethods: Array<string>;
@@ -21,7 +22,12 @@ export /**
  */
 const AuthStackNavigator: React.FC<{}> = () => {
     return (
-        <StackNav.Navigator screenOptions={{ gestureEnabled: true }} initialRouteName="Welcome">
+        <StackNav.Navigator screenOptions={{ gestureEnabled: true }} initialRouteName="IntroScreen">
+            <StackNav.Screen
+                name="Intro"
+                component={IntroScreen}
+                options={{ headerShown: false, animationTypeForReplace: 'pop' }}
+            />
             <StackNav.Screen
                 name="Welcome"
                 component={WelcomeScreen}
