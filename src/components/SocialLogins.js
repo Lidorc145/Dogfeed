@@ -17,6 +17,7 @@ import { setLanguage,signInSocial } from '../ducks/user-slice';
 WebBrowser.maybeCompleteAuthSession();
 
 const FaceBookButton = () => {
+    const dispatch = useAppDispatch();
     const [request, response, promptAsync] = Facebook.useAuthRequest({
         responseType: ResponseType.Token,
         clientId: '459488606352209',
@@ -29,31 +30,27 @@ const FaceBookButton = () => {
             const { access_token } = response.params;
             const auth = getAuth();
             const credential = FacebookAuthProvider.credential(access_token);
-            //console.log("response: ", response,"credential: ", credential, "auth: ", auth);
-            signInWithCredential(auth, credential).then(r=>{
-
-                console.log("facebook: ", r);
-                //
-                // const user = r._tokenResponse;
-                // if (user.isNewUser) {
-                //     updatePrivateUserData({
-                //         id: user.localId,
-                //         provider: user.providerId,
-                //         firstName: user.firstName,
-                //         lastName: user.lastName,
-                //         email: user.email,
-                //         emailVerified: user.emailVerified,
-                //         image: user.photoUrl,
-                //         isAnonymous: false,
-                //         loggedIn: true,
-                //     }, user.isNewUser);
-                //     dispatch(signInSocial(user));
-                // } else {
-                //     const privateUserDataFromDB = await getPrivateUserData(user.localId);
-                //     console.log(user.localId,  privateUserDataFromDB.data());
-                //
-                //     dispatch(signInSocial({ ...privateUserDataFromDB.data()}));
-                // }
+            signInWithCredential(auth, credential).then(async (r)=>{
+                    const user = r._tokenResponse;
+                    const renderedData =
+                        {
+                            id: user.localId,
+                            provider: user.providerId,
+                            firstName: user.firstName,
+                            lastName: user.lastName,
+                            email: user.email,
+                            emailVerified: user.emailVerified,
+                            image: user.photoUrl,
+                            isAnonymous: false,
+                            loggedIn: true,
+                        };
+                    if (user.isNewUser) {
+                        await updatePrivateUserData(renderedData, user.isNewUser);
+                        dispatch(signInSocial(renderedData));
+                    } else {
+                        const privateUserDataFromDB = await getPrivateUserData(user.localId);
+                        dispatch(signInSocial({ ...renderedData, ...privateUserDataFromDB.data(), loggedIn: true}));
+                    }
             });
         }
     }, [response]);
