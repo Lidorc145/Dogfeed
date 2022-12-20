@@ -24,58 +24,37 @@ const FaceBookButton = () => {
         redirectUri: AuthSession.makeRedirectUri({ useProxy: true }),
     });
 
-    const provider = new FacebookAuthProvider();
-
-    // redux query hooks
-    const toast = useToast();
-    const [triggerLogin, { isFetching, error }] = useLazySignUpQuery();
-
-    const navigateBack = () => {
-        const parentNavigator = navigation.getParent();
-        if (parentNavigator?.getId() && parentNavigator?.getId() !== 'root') {
-            parentNavigator?.goBack();
-        }
-    };
-
-    const renderVerificationToast = () => (
-        <AlertToast
-            title="Email Sent!"
-            type="success"
-            message={`Verification email sent to ${email}.`}
-            toExit={() => toast.close('verificationToast')}
-        />
-    );
-
-    const handleLogin = async ({ email, password, firstName, lastName }) => {
-        const { isSuccess } = await triggerLogin({
-            email,
-            password,
-            firstName,
-            lastName,
-        });
-
-        // navigate back screen if in stack
-        if (isSuccess) {
-            toast.show({
-                placement: 'bottom',
-                render: renderVerificationToast,
-                id: 'verificationToast',
-            });
-            navigateBack();
-        }
-    };
-
     React.useEffect(() => {
         if (response?.type === 'success') {
             const { access_token } = response.params;
             const auth = getAuth();
             const credential = FacebookAuthProvider.credential(access_token);
             //console.log("response: ", response,"credential: ", credential, "auth: ", auth);
-            signInWithCredential(auth, credential).then(res=>{
+            signInWithCredential(auth, credential).then(r=>{
 
-                console.log("Google: ", res);
+                console.log("facebook: ", r);
+                //
+                // const user = r._tokenResponse;
+                // if (user.isNewUser) {
+                //     updatePrivateUserData({
+                //         id: user.localId,
+                //         provider: user.providerId,
+                //         firstName: user.firstName,
+                //         lastName: user.lastName,
+                //         email: user.email,
+                //         emailVerified: user.emailVerified,
+                //         image: user.photoUrl,
+                //         isAnonymous: false,
+                //         loggedIn: true,
+                //     }, user.isNewUser);
+                //     dispatch(signInSocial(user));
+                // } else {
+                //     const privateUserDataFromDB = await getPrivateUserData(user.localId);
+                //     console.log(user.localId,  privateUserDataFromDB.data());
+                //
+                //     dispatch(signInSocial({ ...privateUserDataFromDB.data()}));
+                // }
             });
-            //console.log("~~~~", getPrivateUserData("qsx1omcy3WPN1zu7cmv4YTDiGeG2"));
         }
     }, [response]);
 
@@ -101,26 +80,25 @@ const GoogleButton = (navigation) => {
             const credential = GoogleAuthProvider.credential(id_token);
 
             signInWithCredential(auth, credential).then(async (r) => {
-                console.log(r._tokenResponse);
                 const user = r._tokenResponse;
+                const renderedData =
+                {
+                    id: user.localId,
+                    provider: user.providerId,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    email: user.email,
+                    emailVerified: user.emailVerified,
+                    image: user.photoUrl,
+                    isAnonymous: false,
+                    loggedIn: true,
+                };
                 if (user.isNewUser) {
-                    updatePrivateUserData({
-                        id: user.localId,
-                        provider: user.providerId,
-                        firstName: user.firstName,
-                        lastName: user.lastName,
-                        email: user.email,
-                        emailVerified: user.emailVerified,
-                        image: user.photoUrl,
-                        isAnonymous: false,
-                        loggedIn: true,
-                    }, user.isNewUser);
-                    dispatch(signInSocial(user));
+                    await updatePrivateUserData(renderedData, user.isNewUser);
+                    dispatch(signInSocial(renderedData));
                 } else {
                     const privateUserDataFromDB = await getPrivateUserData(user.localId);
-                    console.log(user.localId,  privateUserDataFromDB.data());
-
-                    dispatch(signInSocial({ ...privateUserDataFromDB.data()}));
+                    dispatch(signInSocial({ ...renderedData, ...privateUserDataFromDB.data(), loggedIn: true}));
                 }
 
             });

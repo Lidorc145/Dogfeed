@@ -30,11 +30,10 @@ const userSlice = createSlice({
     reducers: {
         signInSocial: (state, action) => {
             // increment, or set to 1
-            console.log(action.payload);
             const user = action.payload;
             return {
                 ...state,
-                id: user.localId,
+                id: user.id,
                 provider: user.providerId,
                 firstName: user.firstName,
                 lastName: user.lastName,
