@@ -117,9 +117,10 @@ const GoogleButton = (navigation) => {
                     }, user.isNewUser);
                     dispatch(signInSocial(user));
                 } else {
-                    const privateUserDataFromDB = await getPrivateUserData(user.id);
-                    console.log(privateUserDataFromDB);
-                    dispatch(signInSocial({...user, ...privateUserDataFromDB}));
+                    const privateUserDataFromDB = await getPrivateUserData(user.localId);
+                    console.log(user.localId,  privateUserDataFromDB.data());
+
+                    dispatch(signInSocial({ ...privateUserDataFromDB.data()}));
                 }
 
             });

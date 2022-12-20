@@ -40,7 +40,7 @@ const userSlice = createSlice({
                 lastName: user.lastName,
                 email: user.email,
                 emailVerified: user.emailVerified,
-                image: user.photoUrl,
+                image: user.image,
                 loggedIn: true,
             };
         },
