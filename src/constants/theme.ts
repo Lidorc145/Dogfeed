@@ -1,5 +1,6 @@
 import { extendTheme, theme } from 'native-base';
 import { fontConfig } from 'src/constants/fonts';
+import { StyleSheet } from 'react-native';
 
 /**
  * This file defines the light and dark themes for nativebase and react navigation components
@@ -91,3 +92,40 @@ export const navigationDarkTheme = {
         notification: 'rgb(255, 69, 58)',
     },
 };
+
+export const styles = StyleSheet.create({
+    input: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 15,
+        gap: 15,
+        height: 40,
+        borderWidth: 0.1,
+        shadowColor: 'rgba(0,0,0,0.165)',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.58,
+        shadowRadius: 3,
+        elevation: 3,
+        borderRadius: 50,
+    },
+    inputText: {
+        gap: 15,
+        borderWidth: 0.1,
+        backgroundColor: 'rgba(0,0,0,0)',
+        backfaceVisibility: 'visible',
+        shadowColor: 'rgba(0,0,0,0)',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.58,
+        shadowRadius: 3,
+        elevation: 3,
+        borderRadius: 50,
+    },
+});

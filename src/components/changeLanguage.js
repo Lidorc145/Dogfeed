@@ -4,6 +4,7 @@ import React from 'react';
 import { Button } from 'native-base';
 import { useAppDispatch, useAppSelector } from '../ducks/useful-hooks';
 import { setLanguage } from '../ducks/user-slice';
+import {styles} from "../constants/theme";
 
 export const ChangeLanguage = () => {
     const dispatch = useAppDispatch();
@@ -18,7 +19,7 @@ export const ChangeLanguage = () => {
                     { label: 'English', value: 'en' },
                     { label: 'עברית', value: 'he' },
                 ]}>
-                <Button w="100%" colorScheme="primary" variant="link">
+                <Button w="100%" colorScheme="primary" variant="link" style={styles.input}>
                     Change Language
                 </Button>
             </RNPickerSelect>
