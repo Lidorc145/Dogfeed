@@ -11,7 +11,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/bdd2bb29-097e-466f-a684-d67163507e91"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -36,6 +37,9 @@
         "projectId": "bdd2bb29-097e-466f-a684-d67163507e91"
       }
     },
-    "scheme": "dogfeel"
+    "scheme": "dogfeel",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    }
   }
 }
