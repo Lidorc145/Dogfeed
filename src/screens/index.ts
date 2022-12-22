@@ -1,4 +1,5 @@
 export { HomeScreen } from 'src/screens/home';
+export { IntroScreen } from 'src/screens/intro';
 export { ExploreScreen } from 'src/screens/explore';
 export { WelcomeScreen } from 'src/screens/welcome';
 export { LoginScreen } from 'src/screens/login';

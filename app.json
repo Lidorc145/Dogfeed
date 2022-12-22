@@ -4,9 +4,9 @@
     "slug": "Dogfeel",
     "version": "1.0.2",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/dogIcon.png",
     "splash": {
-      "image": "./assets/icon.png",
+      "image": "./assets/dogIcon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -22,7 +22,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
+        "foregroundImage": "./assets/dogIcon.png",
         "backgroundColor": "#FFFFFF"
       },
       "permissions": [],
