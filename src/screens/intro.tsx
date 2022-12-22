@@ -126,7 +126,14 @@ export const IntroScreen: React.FC<{}> = () => {
                         height: 100,
                         margin: 20,
                     }}>
-                    <Progress.Circle size={100} progress={0.25} style={styles.buttonProgress} />
+                    <Progress.Circle
+                        size={100}
+                        progress={0.25}
+                        style={[
+                            styles.buttonProgress,
+                            { transform: [{ rotate: `${page * 90}deg` }] },
+                        ]}
+                    />
                     <Button style={styles.button} onPress={pageData[page].pageFunc}>
                         <AntDesign name="arrowright" size={24} color="white" />
                     </Button>
