@@ -107,11 +107,12 @@ export const IntroScreen: React.FC<{}> = () => {
                         flex: 1,
                         height: '100%',
                         margin: 50,
+                        marginBottom: 130,
                     }}>
                     <Image source={pageData[page].image} />
                 </View>
                 <View style={{ marginTop: 50 }}>
-                    <Heading textAlign="center" mb={3} color="plainText.900">
+                    <Heading textAlign="center" color="plainText.900">
                         <Text>{pageData[page].title}</Text>
                     </Heading>
                     <Text>{pageData[page].subTitle}</Text>

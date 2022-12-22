@@ -10,7 +10,12 @@ export const ChangeLanguage = () => {
     const dispatch = useAppDispatch();
 
     return (
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'center',
+            bottom: 0,
+            margin: 50,
+        }}>
             <RNPickerSelect
                 selectedValue={useAppSelector((state) => state.user.language)}
                 onValueChange={(value) => dispatch(setLanguage(value))}
