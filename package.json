@@ -27,7 +27,6 @@
     "@react-aria/ssr": "^3.2.0",
     "@react-native-async-storage/async-storage": "~1.17.3",
     "@react-native-community/datetimepicker": "6.5.2",
-    "@react-native-community/picker": "^1.8.1",
     "@react-native-community/slider": "4.2.4",
     "@react-native-masked-view/masked-view": "0.2.8",
     "@react-native-picker/picker": "^2.4.8",
@@ -123,7 +122,7 @@
     "prettier": "^2.2.1",
     "react-native-svg-transformer": "^1.0.0",
     "react-test-renderer": "^17.0.2",
-    "sharp-cli": "^4.1.0",
+    "sharp-cli": "2.1.0",
     "ts-jest": "^27.0.7",
     "typescript": "^4.6.3"
   },
