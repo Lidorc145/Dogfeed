@@ -20,7 +20,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.lidorc145.dogfeel"
+      "bundleIdentifier": "com.lidorc145.dogfeed"
     },
     "android": {
       "adaptiveIcon": {
@@ -28,7 +28,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "permissions": [],
-      "package": "com.lidorc145.dogfeel"
+      "package": "com.lidorc145.dogfeed"
     },
     "web": {
       "favicon": "./assets/favicon.png"

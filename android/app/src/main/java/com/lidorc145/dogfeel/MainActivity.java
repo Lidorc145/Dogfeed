@@ -1,4 +1,4 @@
-package com.lidorc145.dogfeel;
+package com.lidorc145.dogfeed;
 
 import android.os.Build;
 import android.os.Bundle;

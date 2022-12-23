@@ -1,4 +1,4 @@
-package com.lidorc145.dogfeel.newarchitecture.modules;
+package com.lidorc145.dogfeed.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

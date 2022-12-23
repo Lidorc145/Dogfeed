@@ -1,4 +1,4 @@
-package com.lidorc145.dogfeel.newarchitecture.components;
+package com.lidorc145.dogfeed.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

@@ -1,4 +1,4 @@
-package com.lidorc145.dogfeel.newarchitecture;
+package com.lidorc145.dogfeed.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -20,9 +20,9 @@ import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.lidorc145.dogfeel.BuildConfig;
-import com.lidorc145.dogfeel.newarchitecture.components.MainComponentsRegistry;
-import com.lidorc145.dogfeel.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.lidorc145.dogfeed.BuildConfig;
+import com.lidorc145.dogfeed.newarchitecture.components.MainComponentsRegistry;
+import com.lidorc145.dogfeed.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
