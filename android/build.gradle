@@ -37,7 +37,6 @@ def REACT_NATIVE_VERSION = new File(['node', '--print', "JSON.parse(require('fs'
 allprojects {
     configurations.all {
         resolutionStrategy {
-            force "com.facebook.react:react-native:" + REACT_NATIVE_VERSION
         }
     }
 

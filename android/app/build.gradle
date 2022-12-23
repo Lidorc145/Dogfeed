@@ -146,8 +146,8 @@ android {
         applicationId 'com.lidorc145.dogfeed'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 5
-        versionName "1.0.5"
+        versionCode 15
+        versionName "1.0.0"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
 
         if (isNewArchitectureEnabled()) {
@@ -276,7 +276,6 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:multidex:2.0.1'
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     //noinspection GradleDynamicVersion

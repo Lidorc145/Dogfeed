@@ -1,5 +1,5 @@
-import React from 'react';
-import { useColorScheme } from 'react-native';
+import React, { useEffect } from 'react';
+import { useColorScheme, Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { NativeBaseProvider } from 'native-base';
 import { Provider } from 'react-redux';
@@ -26,6 +26,7 @@ import {
     Nunito_900Black,
     Nunito_900Black_Italic,
 } from '@expo-google-fonts/nunito';
+// import messaging from '@react-native-firebase/messaging';
 
 const persistor = persistStore(store);
 
@@ -67,6 +68,14 @@ export const App = () => {
     if (!fontsLoaded) {
         return <StatusBar />;
     }
+
+    // useEffect(() => {
+    //     const unsubscribe = messaging().onMessage(async (remoteMessage) => {
+    //         Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    //     });
+    //
+    //     return unsubscribe;
+    // }, []);
 
     return (
         <>

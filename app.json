@@ -3,7 +3,7 @@
     "name": "Dogfeel",
     "slug": "Dogfeel",
     "originalFullName": "@lidorc145/Dogfeel",
-    "version": "1.0.3",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/dogSqureIcon.png",
     "splash": {
@@ -11,6 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "plugins": [],
     "updates": {
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/bdd2bb29-097e-466f-a684-d67163507e91"
@@ -28,7 +29,8 @@
         "backgroundColor": "#FFFFFF"
       },
       "permissions": [],
-      "package": "com.lidorc145.dogfeed"
+      "package": "com.lidorc145.dogfeed",
+      "versionCode": 15
     },
     "web": {
       "favicon": "./assets/favicon.png"
