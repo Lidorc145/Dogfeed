@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { useColorScheme, Alert, Text } from 'react-native';
+import { useColorScheme, Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { NativeBaseProvider } from 'native-base';
+import { NativeBaseProvider,Text } from 'native-base';
 import { Provider } from 'react-redux';
 import { SSRProvider } from '@react-aria/ssr';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -91,7 +91,7 @@ export const App = () => {
                     </SSRProvider>
                 </PersistGate>
             </Provider>
-            <Text>{a.expo.android.versionCode}</Text>
+            <Text>Version Number: {a.expo.android.versionCode}</Text>
         </>
     );
 };
