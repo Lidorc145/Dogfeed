@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useColorScheme, Alert } from 'react-native';
+import { useColorScheme, Alert, Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { NativeBaseProvider } from 'native-base';
 import { Provider } from 'react-redux';
@@ -27,6 +27,7 @@ import {
     Nunito_900Black_Italic,
 } from '@expo-google-fonts/nunito';
 // import messaging from '@react-native-firebase/messaging';
+import a from '../app.json';
 
 const persistor = persistStore(store);
 
@@ -90,6 +91,7 @@ export const App = () => {
                     </SSRProvider>
                 </PersistGate>
             </Provider>
+            <Text>{a.expo.android.versionCode}</Text>
         </>
     );
 };

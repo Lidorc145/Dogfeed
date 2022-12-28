@@ -13,15 +13,14 @@
     },
     "plugins": [],
     "updates": {
-      "fallbackToCacheTimeout": 0,
-      "url": "https://u.expo.dev/bdd2bb29-097e-466f-a684-d67163507e91"
+      "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.lidorc145.dogfeed"
+      "bundleIdentifier": "com.lidorc145.dogfeel"
     },
     "android": {
       "adaptiveIcon": {
@@ -29,8 +28,8 @@
         "backgroundColor": "#FFFFFF"
       },
       "permissions": [],
-      "package": "com.lidorc145.dogfeed",
-      "versionCode": 15
+      "package": "com.lidorc145.dogfeel",
+      "versionCode": 38
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -40,9 +39,6 @@
         "projectId": "bdd2bb29-097e-466f-a684-d67163507e91"
       }
     },
-    "scheme": "dogfeel",
-    "runtimeVersion": {
-      "policy": "sdkVersion"
-    }
+    "scheme": "dogfeel"
   }
 }
