@@ -29,7 +29,7 @@
       },
       "permissions": [],
       "package": "com.lidorc145.dogfeel",
-      "versionCode": 40
+      "versionCode": 46
     },
     "web": {
       "favicon": "./assets/favicon.png"
