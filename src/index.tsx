@@ -87,7 +87,7 @@ export const App = () => {
                         <NativeBaseProvider
                             theme={scheme === 'dark' ? nativeBaseDarkTheme : nativeBaseLightTheme}>
                             <RootNavigator scheme={scheme} />
-                            <Text textAlign="center">Version: {a.expo.android.versionCode} 1.0.0</Text>
+                            <Text textAlign="center">Version: {a.expo.android.versionCode} 1.0.4</Text>
                         </NativeBaseProvider>
                     </SSRProvider>
                 </PersistGate>

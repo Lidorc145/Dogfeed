@@ -20,7 +20,8 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.lidorc145.dogfeel"
+      "bundleIdentifier": "com.lidorc145.dogfeel",
+      "buildNumber": "3"
     },
     "android": {
       "adaptiveIcon": {
