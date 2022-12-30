@@ -2,7 +2,6 @@
   "expo": {
     "name": "Dogfeel",
     "slug": "Dogfeel",
-    "originalFullName": "@lidorc145/Dogfeel",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/dogSqureIcon.png",
@@ -11,7 +10,19 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "plugins": [],
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notificationIcon.png",
+          "color": "#ffffff",
+          "sounds": [
+            "./assets/sounds/short_bark.wav",
+            "./assets/sounds/long_bark.wav"
+          ]
+        }
+      ]
+    ],
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -21,16 +32,22 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.lidorc145.dogfeel",
-      "buildNumber": "3"
+      "buildNumber": "4",
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "remote-notification"
+        ]
+      }
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/dogSqureIcon.png",
         "backgroundColor": "#FFFFFF"
       },
       "permissions": [],
       "package": "com.lidorc145.dogfeel",
-      "versionCode": 46
+      "versionCode": 54
     },
     "web": {
       "favicon": "./assets/favicon.png"
