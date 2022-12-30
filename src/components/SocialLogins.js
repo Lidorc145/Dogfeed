@@ -8,6 +8,8 @@ import {GoogleIcon,FacebookIcon,AppleIcon} from '../../assets/SocialLoginsIcons'
 import {getPrivateUserData, updatePrivateUserData} from "../firebase/user-api";
 import { useAppDispatch, useAppSelector } from '../ducks/useful-hooks';
 import { signInSocial } from '../ducks/user-slice';
+import {ResponseType} from "expo-auth-session";
+import * as AuthSession from "expo-auth-session";
 
 WebBrowser.maybeCompleteAuthSession();
 const providerGoogle = new GoogleAuthProvider();
@@ -23,10 +25,7 @@ providerGoogle.setCustomParameters({
 const FaceBookButton = () => {
     const dispatch = useAppDispatch();
     const [request, response, promptAsync] = Facebook.useAuthRequest({
-        responseType: ResponseType.Token,
-        iosClientId: '459488606352209',
-        androidClientId: '459488606352209',
-        redirectUri: AuthSession.makeRedirectUri({ useProxy: true }),
+        clientId: '459488606352209'
     });
 
     React.useEffect(() => {

@@ -48,7 +48,7 @@
       },
       "permissions": [],
       "package": "com.lidorc145.dogfeel",
-      "versionCode": 55
+      "versionCode": 56
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -58,6 +58,7 @@
         "projectId": "bdd2bb29-097e-466f-a684-d67163507e91"
       }
     },
-    "scheme": "dogfeel"
+    "scheme": "dogfeel",
+    "facebookScheme": "fb459488606352209"
   }
 }

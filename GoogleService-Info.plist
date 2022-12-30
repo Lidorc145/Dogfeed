@@ -6,9 +6,31 @@
 	<string>290343474599-l54lot58sbpllfmm2h3ef0kl3uo2f748.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
 	<string>com.googleusercontent.apps.290343474599-l54lot58sbpllfmm2h3ef0kl3uo2f748</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>290343474599-8g53us0muj2goe3oufbsvdl7q1un64j8.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyApWugoTRmSZO0eakLv_ntFKY3rGgSeZNk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>290343474599</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.lidorc145.dogfeel</string>
+	<key>PROJECT_ID</key>
+	<string>dogfeel-5238f</string>
+	<key>STORAGE_BUCKET</key>
+	<string>dogfeel-5238f.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:290343474599:ios:07c48fe719b86f9aa8d282</string>
 </dict>
 </plist>
