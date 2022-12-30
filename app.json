@@ -32,7 +32,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.lidorc145.dogfeel",
-      "buildNumber": "4",
+      "buildNumber": "7",
       "infoPlist": {
         "UIBackgroundModes": [
           "remote-notification"
@@ -47,7 +47,7 @@
       },
       "permissions": [],
       "package": "com.lidorc145.dogfeel",
-      "versionCode": 54
+      "versionCode": 55
     },
     "web": {
       "favicon": "./assets/favicon.png"
