@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useColorScheme, Alert } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {useColorScheme, Alert, TextInput} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { NativeBaseProvider,Text } from 'native-base';
 import { Provider } from 'react-redux';
@@ -27,7 +27,10 @@ import {
     Nunito_900Black_Italic,
 } from '@expo-google-fonts/nunito';
 // import messaging from '@react-native-firebase/messaging';
-import a from '../app.json';
+import app from '../app.json';
+import {registerForPushNotification} from "src/services";
+import {FormInput} from "src/components/form-input";
+
 
 const persistor = persistStore(store);
 
@@ -42,6 +45,15 @@ const persistor = persistStore(store);
 export const App = () => {
     // hook to find user preference for color scheme
     const scheme = useColorScheme();
+    const [expoPushToken, setExpoPushToken] = useState('');
+    useEffect(() => {
+        registerForPushNotification().then(token=> setExpoPushToken(token)).catch(e=>alert(e));
+
+        return () => {
+        };
+    }, []);
+
+
 
     /**
      * Load google fonts using expo-font
@@ -87,7 +99,13 @@ export const App = () => {
                         <NativeBaseProvider
                             theme={scheme === 'dark' ? nativeBaseDarkTheme : nativeBaseLightTheme}>
                             <RootNavigator scheme={scheme} />
-                            <Text textAlign="center">Version: {a.expo.android.versionCode} 1.0.4</Text>
+
+
+                            <Text textAlign="center">Device Push Token:</Text>
+                            <TextInput
+                                value={expoPushToken}
+                            />
+                            <Text textAlign="center">Build: {app.expo.android.versionCode} | Version: 1.0.0 </Text>
                         </NativeBaseProvider>
                     </SSRProvider>
                 </PersistGate>

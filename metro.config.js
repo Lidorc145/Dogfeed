@@ -15,14 +15,8 @@ config.resolver = {
     ...resolver,
     assetExts: resolver.assetExts.filter((ext) => ext !== "svg"),
     sourceExts: [...resolver.sourceExts, "svg"],
+    resolverMainFields: ['sbmodern', 'react-native', 'browser', 'main'],
   };
 
 
 module.exports = config;
-
-module.exports = {
-  /* existing config */
-  resolver: {
-    resolverMainFields: ['sbmodern', 'react-native', 'browser', 'main'],
-  },
-};
