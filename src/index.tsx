@@ -50,7 +50,6 @@ export const App = () => {
         registerForPushNotification().then(token=> setExpoPushToken(token)).catch(e=>alert(e));
 
         return () => {
-            alert("delete");
         };
     }, []);
 
@@ -102,11 +101,11 @@ export const App = () => {
                             <RootNavigator scheme={scheme} />
 
 
-                            <Text textAlign="center">Device PushToken:</Text>
+                            <Text textAlign="center">Device Push Token:</Text>
                             <TextInput
                                 value={expoPushToken}
                             />
-                            <Text textAlign="center">Version: {app.expo.android.versionCode} </Text>
+                            <Text textAlign="center">Build: {app.expo.android.versionCode} | Version: 1.0.0 </Text>
                         </NativeBaseProvider>
                     </SSRProvider>
                 </PersistGate>

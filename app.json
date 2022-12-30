@@ -32,6 +32,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.lidorc145.dogfeel",
+      "googleServicesFile": "./GoogleService-Info.plist",
       "buildNumber": "7",
       "infoPlist": {
         "UIBackgroundModes": [

@@ -1,11 +1,9 @@
 import * as React from 'react';
 import * as WebBrowser from 'expo-web-browser';
-import { ResponseType } from 'expo-auth-session';
 import * as Google from 'expo-auth-session/providers/google';
+import * as Facebook from 'expo-auth-session/providers/facebook';
 import { getAuth, GoogleAuthProvider,FacebookAuthProvider, signInWithCredential } from 'firebase/auth';
 import { View } from 'react-native';
-import * as Facebook from 'expo-auth-session/providers/facebook';
-import * as AuthSession from "expo-auth-session";
 import {GoogleIcon,FacebookIcon,AppleIcon} from '../../assets/SocialLoginsIcons';
 import {getPrivateUserData, updatePrivateUserData} from "../firebase/user-api";
 import { useAppDispatch, useAppSelector } from '../ducks/useful-hooks';
@@ -26,8 +24,8 @@ const FaceBookButton = () => {
     const dispatch = useAppDispatch();
     const [request, response, promptAsync] = Facebook.useAuthRequest({
         responseType: ResponseType.Token,
-        clientId: '459488606352209',
-        expoClientId: '459488606352209',
+        iosClientId: '459488606352209',
+        androidClientId: '459488606352209',
         redirectUri: AuthSession.makeRedirectUri({ useProxy: true }),
     });
 
@@ -74,7 +72,8 @@ const FaceBookButton = () => {
 const GoogleButton = (navigation) => {
     const dispatch = useAppDispatch();
     const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
-        clientId: '290343474599-je01f3rsbkikc7fjspimoabt4kcr5skp.apps.googleusercontent.com',
+        androidClientId: '290343474599-8g53us0muj2goe3oufbsvdl7q1un64j8.apps.googleusercontent.com',
+        iosClientId: '290343474599-l54lot58sbpllfmm2h3ef0kl3uo2f748.apps.googleusercontent.com'
     });
 
     React.useEffect( () => {
